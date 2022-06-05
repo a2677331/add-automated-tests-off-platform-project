@@ -6,13 +6,14 @@ balance = 0
 
 @app.route('/')
 def index():
-    return jsonify({'balance': b
+    return jsonify({'balance': balance})
 
 @app.route('/deposit')
 def deposit():
     global balance
     amount = request.args.get('amount')
-    balance = balance
+    balance = balance + int(amount)
+    return jsonify({'balance': balance})
 
 @app.route('/withdraw')
 def withdraw():
